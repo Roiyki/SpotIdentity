@@ -1,0 +1,8 @@
+# This application runs on Python, so make sure you have it installed
+python>=3.6
+
+# Flask is used as the web framework to deliver the application
+Flask==2.0.2
+
+# Spotipy is utilized for accessing Spotify data through its API
+spotipy==2.18.0
