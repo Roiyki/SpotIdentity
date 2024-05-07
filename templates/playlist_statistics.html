@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ playlist_name }} Statistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ playlist_name }} Statistics</h1>
+
+        <div class="chart">
+            {% for genre, count in genre_counts.items() %}
+            <div class="bar-container">
+                <div class="bar" style="width: {{ (count/song_genres|length*100)|round(2) }}%">
+                    <div class="percentage">{{ (count/song_genres|length*100)|round(2) }}%</div>
+                </div>
+                <div class="label">{{ genre }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

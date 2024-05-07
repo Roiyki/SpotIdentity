@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Playlists</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>User Playlists</h1>
+        <div class="playlist-grid">
+            {% for playlist in playlists %}
+            <div class="playlist-item">
+                <div class="imageContainer">
+                    {% if playlist.images %}
+                        <img src="{{ playlist.images[0].url }}" alt="Playlist Image">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='default_playlist_image.jpg') }}" alt="Default Playlist Image">
+                    {% endif %}
+                </div>
+                <div class="playlist-info">
+                    <h2><a href="{{ url_for('playlist_statistics', playlist_id=playlist.id) }}">{{ playlist.name }}</a></h2>
+                    <p>{{ playlist.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
